@@ -3,7 +3,7 @@ import {
   View
 } from "react-native";
 
-export class Button extends Component {
+export class Square extends Component {
   
   render() {
     const { color } = this.props;

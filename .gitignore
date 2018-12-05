@@ -28,3 +28,7 @@ build/Release
 node_modules
 
 \.DS_Store
+
+\.expo/settings\.json
+
+\.expo/packager-info\.json

@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Button } from './components/Button';
+import { Square } from './components/Square';
+import { Picture } from './components/Image'
 
 const colors = [
   'red',
@@ -15,9 +16,14 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {colors.map((color, index) =>
-          <Button key={index} color={color}/>
-        )}
+        <View style={styles.container}>
+          {colors.map((color, index) =>
+            <Square key={index} color={color}/>
+          )}
+        </View>
+        <View style={styles.container}>
+          <Picture />
+        </View>
       </View>
     );
   }
