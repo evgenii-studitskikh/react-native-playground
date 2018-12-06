@@ -15,13 +15,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.container}>
+      <View style={styles.flex}>
+        <View style={[styles.flex, styles.flexCenter]}>
           {colors.map((color, index) =>
-            <Square key={index} color={color}/>
+            <Square key={index} color={color} size={20}/>
           )}
         </View>
-        <View style={styles.container}>
+        <View style={[styles.flex, styles.flexCenter]}>
           <Picture />
         </View>
       </View>
@@ -30,10 +30,17 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  flex: {
+    flex: 1
+  },
+  flexCenter: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
+  },
+  flexRow: {
+    flexDirection: 'row'
+  },
+  flexColumn: {
+    flexDirection: 'column'
   }
 });

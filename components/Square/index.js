@@ -6,9 +6,9 @@ import {
 export class Square extends Component {
   
   render() {
-    const { color } = this.props;
+    const { color, size } = this.props;
     return (
-      <View style={{width: 10, height: 10, backgroundColor: color}}/>
+      <View style={{width: size, height: size, backgroundColor: color}}/>
     )
   }
 }
