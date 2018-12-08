@@ -23,11 +23,21 @@ export const styles = StyleSheet.create({
     height: 40,
     width: 300,
     marginTop: 2,
-    padding: 5,
+    paddingLeft: 10,
     borderWidth: 1,
     borderRadius: 5,
     borderColor: 'white',
     color: 'white',
     fontSize: 16,
+  },
+  button: {
+    height: 40,
+    width: 300,
+    marginTop: 20,
+    backgroundColor: '#4E69A2',
+    borderRadius: 5
+  },
+  buttonDisabled: {
+    backgroundColor: '#9CABCA'
   }
 });
