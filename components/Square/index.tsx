@@ -3,7 +3,12 @@ import {
   View
 } from "react-native";
 
-export class Square extends Component {
+interface ISquareProps {
+  color: string,
+  size: number
+}
+
+export class Square extends Component<ISquareProps> {
   
   render() {
     const { color, size } = this.props;

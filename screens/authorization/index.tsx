@@ -4,14 +4,14 @@ import {
   TextInput,
   Text,
   ImageBackground,
-  StyleSheet
 } from "react-native";
 
+import { styles } from '../../styles';
 import background_pic from '../../assets/background.jpg';
 
 export class AuthorizationScreen extends Component {
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       login: '',
@@ -44,33 +44,3 @@ export class AuthorizationScreen extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1
-  },
-  flexCenter: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  flexRow: {
-    flexDirection: 'row'
-  },
-  flexColumn: {
-    flexDirection: 'column'
-  },
-  label: {
-    color: 'white',
-  },
-  input: {
-    height: 40,
-    width: 200,
-    marginTop: 2,
-    padding: 5,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: 'white',
-    color: 'white',
-    fontSize: 16,
-  }
-});
