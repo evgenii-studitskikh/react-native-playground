@@ -3,14 +3,15 @@ import {
   View,
   TextInput,
   Text,
-  Button,
   ImageBackground,
   Alert,
-  TouchableHighlight
+  TouchableHighlight,
+  Image,
 } from "react-native";
 
 import { styles } from '../../styles';
 import background_pic from '../../assets/background.jpg';
+import logo_pic from '../../assets/logo.png';
 
 interface IAuthorizationScreenState {
   login: string,
@@ -35,6 +36,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
     return (
       <ImageBackground source={background_pic} style={{width: '100%', height: '100%'}}>
         <View style={[styles.flex, styles.flexCenter, styles.flexColumn]}>
+          <Image source={logo_pic} style={styles.logo} resizeMode='contain'/>
           <View>
             <Text style={styles.label}>Login</Text>
             <TextInput

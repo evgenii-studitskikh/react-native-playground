@@ -47,5 +47,10 @@ export const styles = StyleSheet.create({
   },
   buttonDisabled: {
     backgroundColor: '#9CABCA'
+  },
+  logo: {
+    width: 120,
+    height: 150,
+    marginBottom: 5,
   }
 });
