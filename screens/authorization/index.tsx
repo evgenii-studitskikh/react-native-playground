@@ -6,6 +6,7 @@ import {
   Button,
   ImageBackground,
   Alert,
+  TouchableHighlight
 } from "react-native";
 
 import { styles } from '../../styles';
@@ -49,14 +50,13 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
               secureTextEntry
             />
           </View>
-          <View style={[styles.button, isEmpty ? styles.buttonDisabled : null]}>
-            <Button
-              title='LOG IN'
-              onPress={() => Alert.alert('Log in!')}
-              color='#FFFFFF'
-              disabled={isEmpty ? true : false}
-            />
-          </View>
+          <TouchableHighlight
+            style={[styles.button, isEmpty ? styles.buttonDisabled : null]}
+            underlayColor={isEmpty ? '#9CABCA' : '#0D2D5C'}
+            onPress={() => Alert.alert('Log in!')}
+          >
+            <Text style={isEmpty ? styles.buttonTextDisabled : styles.buttonText}>LOG IN</Text>
+          </TouchableHighlight>
         </View>
       </ImageBackground>
     )

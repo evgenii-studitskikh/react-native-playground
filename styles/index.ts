@@ -31,11 +31,19 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 40,
     width: 300,
     marginTop: 20,
     backgroundColor: '#4E69A2',
     borderRadius: 5
+  },
+  buttonText: {
+    color: '#FFFFFF'
+  },
+  buttonTextDisabled: {
+    color: '#DDDDDD'
   },
   buttonDisabled: {
     backgroundColor: '#9CABCA'
