@@ -3816,6 +3816,10 @@ react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
 
+react-native-draggable-flatlist@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-draggable-flatlist/-/react-native-draggable-flatlist-1.1.5.tgz#9f4ce652f9a3ca2f55bf9a4972d735846b2ea6b5"
+
 react-native-elements@^0.19.1:
   version "0.19.1"
   resolved "http://registry.npmjs.org/react-native-elements/-/react-native-elements-0.19.1.tgz#f92b69d864a150215d01f81fe3c52a9cada83e45"

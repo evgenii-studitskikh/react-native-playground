@@ -52,5 +52,14 @@ export const styles = StyleSheet.create({
     width: 120,
     height: 150,
     marginBottom: 5,
-  }
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderStyle: 'solid',
+    marginTop: -1
+  },
 });

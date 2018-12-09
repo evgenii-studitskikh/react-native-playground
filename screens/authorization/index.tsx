@@ -36,7 +36,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
     this.setState({
       isLoading: false
     })
-  }, 3000);
+  }, 500);
 
   render() {
     
@@ -81,7 +81,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
                 <TouchableHighlight
                   style={[styles.button, isEmpty ? styles.buttonDisabled : null]}
                   underlayColor={isEmpty ? '#9CABCA' : '#0D2D5C'}
-                  onPress={() => Alert.alert('Log in!')}
+                  onPress={() => isEmpty ? null : Alert.alert('Log in!')}
                 >
                   <Text style={isEmpty ? styles.buttonTextDisabled : styles.buttonText}>LOG IN</Text>
                 </TouchableHighlight>
