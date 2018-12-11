@@ -9,7 +9,7 @@ import { ListScreen } from './screens/list';
 export default class App extends React.Component {
   render() {
     return (
-      <ListScreen/>
+      <AuthorizationScreen/>
     );
   }
 }

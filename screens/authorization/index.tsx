@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   Image,
   ActivityIndicator,
+  KeyboardAvoidingView
 } from "react-native";
 
 import { styles } from '../../styles';
@@ -50,7 +51,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
             size = "large"
             style={{marginTop: 200}}
           />
-        : <View>
+        : <KeyboardAvoidingView behavior='padding'>
             <ImageBackground
               loadingIndicatorSource={preload_anim}
               source={background_pic} 
@@ -87,7 +88,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
                 </TouchableHighlight>
               </View>
             </ImageBackground>
-          </View>
+          </KeyboardAvoidingView>
     )
   }
 }
