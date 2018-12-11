@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  View,
-} from 'react-native';
+import { createStackNavigator, createNavigationContainer } from 'react-navigation';
 
 import { AuthorizationScreen } from './screens/authorization';
 import { ListScreen } from './screens/list';
@@ -9,7 +7,19 @@ import { ListScreen } from './screens/list';
 export default class App extends React.Component {
   render() {
     return (
-      <AuthorizationScreen/>
+      <AppContainer />
     );
   }
 }
+
+const AppNavigator = createStackNavigator(
+  {
+    Authorization: { screen: AuthorizationScreen },
+    List: { screen: ListScreen },
+  },
+  {
+    initialRouteName: 'Authorization'
+  }
+);
+
+const AppContainer = createNavigationContainer(AppNavigator);
