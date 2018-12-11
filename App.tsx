@@ -14,11 +14,16 @@ export default class App extends React.Component {
 
 const AppNavigator = createStackNavigator(
   {
-    Authorization: { screen: AuthorizationScreen },
+    Authorization: { 
+      screen: AuthorizationScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
     List: { screen: ListScreen },
   },
   {
-    initialRouteName: 'Authorization'
+    initialRouteName: 'Authorization',
   }
 );
 

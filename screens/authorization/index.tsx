@@ -4,7 +4,6 @@ import {
   TextInput,
   Text,
   ImageBackground,
-  Alert,
   TouchableHighlight,
   Image,
   ActivityIndicator,
@@ -15,6 +14,7 @@ import { styles } from '../../styles';
 import background_pic from '../../assets/background.jpg';
 import logo_pic from '../../assets/logo.png';
 import preload_anim from '../../assets/preload.gif';
+import { NavigationScreenProp } from 'react-navigation';
 
 interface IAuthorizationScreenState {
   login: string,
@@ -22,9 +22,13 @@ interface IAuthorizationScreenState {
   isLoading: boolean
 }
 
-export class AuthorizationScreen extends Component<any, IAuthorizationScreenState> {
+interface IAuthorizationScreenProps {
+  navigation: NavigationScreenProp<any>
+}
 
-  constructor(props: any) {
+export class AuthorizationScreen extends Component<IAuthorizationScreenProps, IAuthorizationScreenState> {
+
+  constructor(props: IAuthorizationScreenProps) {
     super(props);
     this.state = {
       login: '',
@@ -40,7 +44,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
   }, 500);
 
   render() {
-    
+    const { navigation } = this.props;
     const { login, password, isLoading } = this.state;
     const isEmpty = !login.length || !password.length;
 
@@ -82,7 +86,7 @@ export class AuthorizationScreen extends Component<any, IAuthorizationScreenStat
                 <TouchableHighlight
                   style={[styles.button, isEmpty ? styles.buttonDisabled : null]}
                   underlayColor={isEmpty ? '#9CABCA' : '#0D2D5C'}
-                  onPress={() => isEmpty ? null : Alert.alert('Log in!')}
+                  onPress={() => isEmpty ? null : navigation.navigate('List')}
                 >
                   <Text style={isEmpty ? styles.buttonTextDisabled : styles.buttonText}>LOG IN</Text>
                 </TouchableHighlight>
