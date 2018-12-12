@@ -55,11 +55,14 @@ export const styles = StyleSheet.create({
   },
   item: {
     padding: 10,
+    margin: 5,
     fontSize: 18,
     height: 44,
-    borderWidth: 1,
-    borderColor: 'grey',
-    borderStyle: 'solid',
-    marginTop: -1
+    borderRadius: 5,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
 });

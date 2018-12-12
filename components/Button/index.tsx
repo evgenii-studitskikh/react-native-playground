@@ -7,15 +7,18 @@ import {
 import { styles } from '../../styles';
 
 interface IButtonProps {
-  title: string
+  title: string,
+  onPress: () => void
 }
 
 export const Button = ({
-  title
+  title,
+  onPress
 }: IButtonProps) =>
   <TouchableHighlight
     style={[styles.button]}
     underlayColor='#0D2D5C'
+    onPress={onPress}
     >
     <Text style={styles.buttonText}>{title}</Text>
   </TouchableHighlight>

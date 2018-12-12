@@ -22,5 +22,5 @@ export const Item = ({
     onPressOut={onItemPressOut}
     style={styles.item}
     >
-    <Text>{data.key}</Text>
+    <Text>{data.name}</Text>
   </TouchableOpacity>

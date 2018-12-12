@@ -1,31 +1,51 @@
 import React, { Component } from "react";
 import {
   View,
-  FlatList,
 } from "react-native";
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import axios from 'axios';
 
+import { config } from '../../config'
 import { styles } from '../../styles';
 import { Item } from './Item';
 import { Button } from '../../components/Button';
 
-export class ListScreen extends Component {
+interface IListScreenState {
+  data: any[],
+  url: string
+}
+
+export class ListScreen extends Component<any, IListScreenState> {
+
+  public state: IListScreenState = {
+    data: [],
+    url: `${config.apiPath}/people/`
+  }
+
+  public getData = () => {
+
+    const { data, url } = this.state;
+
+    axios.get(url)
+      .then((response) => this.setState({
+        data: [...data, ...response.data.results],
+        url: response.data.next
+      }))
+      .catch((error) => console.log(error));
+  }
+  
+  public componentDidMount() {
+    this.getData();
+  }
   
   render() {
     
+    const { data } = this.state;
+
     return (
-      <View style={[styles.flex, {marginTop: 20}]}>
+      <View style={[styles.flex]}>
         <DraggableFlatList
-          data={[
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-          ]}
+          data={data}
           scrollPercent={5}
           renderItem={({item, move, moveEnd}) =>
             <Item 
@@ -35,9 +55,12 @@ export class ListScreen extends Component {
             />
           }
         />
-        <Button
-          title='Add item'
-        />
+        <View style={[styles.flexCenter, {marginBottom: 20}]}>
+          <Button
+            title='Load more'
+            onPress={() => this.getData()}
+          />
+        </View>
       </View>
     )
   }

@@ -20,10 +20,15 @@ const AppNavigator = createStackNavigator(
         header: null
       }
     },
-    List: { screen: ListScreen },
+    List: { 
+      screen: ListScreen,
+      navigationOptions: {
+        title: 'Draggable List'
+      }
+    },
   },
   {
-    initialRouteName: 'Authorization',
+    initialRouteName: 'List',
   }
 );
 
