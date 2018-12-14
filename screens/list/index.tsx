@@ -35,7 +35,7 @@ export class ListScreen extends Component<any, IListScreenState> {
       .then((response) => this.setState({
         data: [...data, ...response.data.results],
         url: response.data.next,
-        isLoading: false
+        isLoading: false // change to setState
       }))
       .catch((error) => console.log(error));
   }
