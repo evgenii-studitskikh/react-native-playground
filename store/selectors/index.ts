@@ -1,0 +1,1 @@
+export const getActiveListItem = (state: any) => state.app.activeListItem;

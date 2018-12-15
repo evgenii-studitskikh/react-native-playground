@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   TouchableOpacity,
   Text
 } from "react-native";
 
 import { styles } from '../../../styles';
+import { IListItem } from '../../../store/reducers/app';
 
 interface IItemProps {
   data: any,
   onItemLongPress: any,
   onItemPressOut: any,
-  onItemPress: () => any
+  onItemPress: (data: IListItem) => void,
 }
 
 export const Item = ({
@@ -21,7 +22,10 @@ export const Item = ({
 }: IItemProps) =>
   <TouchableOpacity
     onLongPress={onItemLongPress}
-    onPress={onItemPress}
+    onPress={() => onItemPress({
+      id: null,
+      title: data.name
+    })}
     onPressOut={onItemPressOut}
     style={styles.item}
     >

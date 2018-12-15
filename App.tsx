@@ -11,7 +11,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer />
+        <NavigationContainer />
       </Provider>
     );
   }
@@ -43,4 +43,4 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-const AppContainer = createNavigationContainer(AppNavigator);
+const NavigationContainer = createNavigationContainer(AppNavigator);
