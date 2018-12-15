@@ -8,17 +8,20 @@ import { styles } from '../../../styles';
 
 interface IItemProps {
   data: any,
-  onItemPress: any
-  onItemPressOut: any
+  onItemLongPress: any,
+  onItemPressOut: any,
+  onItemPress: () => any
 }
 
 export const Item = ({
   data,
+  onItemLongPress,
   onItemPress,
   onItemPressOut,
 }: IItemProps) =>
   <TouchableOpacity
-    onLongPress={onItemPress}
+    onLongPress={onItemLongPress}
+    onPress={onItemPress}
     onPressOut={onItemPressOut}
     style={styles.item}
     >

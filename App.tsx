@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator, createNavigationContainer } from 'react-navigation';
 
-import { AuthorizationScreen } from './screens/authorization';
-import { ListScreen } from './screens/list';
+import { AuthorizationScreen } from './screens/Authorization';
+import { ListScreen } from './screens/List';
+import { DetailScreen } from './screens/Detail';
 
 export default class App extends React.Component {
   render() {
@@ -26,6 +27,12 @@ const AppNavigator = createStackNavigator(
         title: 'Draggable List'
       }
     },
+    Detail: {
+      screen: DetailScreen,
+      navigationOptions: {
+        title: 'Name from store'
+      }
+    }
   },
   {
     initialRouteName: 'List',
