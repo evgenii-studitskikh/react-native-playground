@@ -1,6 +1,8 @@
 import React from 'react';
 import { createStackNavigator, createNavigationContainer } from 'react-navigation';
+import { Provider } from "react-redux";
 
+import { store } from "./store";
 import { AuthorizationScreen } from './screens/Authorization';
 import { ListScreen } from './screens/List';
 import { DetailScreen } from './screens/Detail';
@@ -8,7 +10,9 @@ import { DetailScreen } from './screens/Detail';
 export default class App extends React.Component {
   render() {
     return (
-      <AppContainer />
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
     );
   }
 }
