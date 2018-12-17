@@ -2,8 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from 'react-redux';
 import {
   View,
-  ActivityIndicator,
-  Text
+  ActivityIndicator
 } from "react-native";
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import axios from 'axios';
@@ -13,7 +12,6 @@ import { styles } from '../../styles';
 import { Item } from './Item';
 import { Button } from '../../components/Button';
 import { setActiveListItem } from '../../store/actions/app';
-import { getActiveListItem } from '../../store/selectors';
 
 
 interface IListScreenLayoutState {
@@ -52,10 +50,9 @@ class ListScreenLayout extends PureComponent<any, IListScreenLayoutState> {
   render() {
     
     const { data, isLoading } = this.state;
-    const { setActiveListItem, activeListItem } = this.props;
+    const { setActiveListItem, navigation } = this.props;
     return (
       <View style={[styles.flex]}>
-        <Text>active item: {activeListItem.title}</Text>
         <DraggableFlatList
           data={data}
           scrollPercent={5}
@@ -65,6 +62,7 @@ class ListScreenLayout extends PureComponent<any, IListScreenLayoutState> {
               onItemPressOut={moveEnd}
               data={item}
               onItemPress={setActiveListItem}
+              navigation={navigation}
             />
           }
         />
@@ -82,10 +80,6 @@ class ListScreenLayout extends PureComponent<any, IListScreenLayoutState> {
   }
 }
 
-const mapStateToProps = (state: any) => ({
-  activeListItem: getActiveListItem(state)
-});
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   setActiveListItem
 })(ListScreenLayout);

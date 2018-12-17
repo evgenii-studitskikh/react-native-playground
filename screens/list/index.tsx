@@ -5,9 +5,11 @@ import Layout from './layout';
 export class ListScreen extends Component{
 
   render() {
-    
+
     return (
-      <Layout />
+      <Layout
+        {...this.props}
+      />
     )
   }
 }

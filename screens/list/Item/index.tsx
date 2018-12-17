@@ -12,6 +12,7 @@ interface IItemProps {
   onItemLongPress: any,
   onItemPressOut: any,
   onItemPress: (data: IListItem) => void,
+  navigation: any
 }
 
 export const Item = ({
@@ -19,13 +20,17 @@ export const Item = ({
   onItemLongPress,
   onItemPress,
   onItemPressOut,
+  navigation
 }: IItemProps) =>
   <TouchableOpacity
     onLongPress={onItemLongPress}
-    onPress={() => onItemPress({
-      id: null,
-      title: data.name
-    })}
+    onPress={() => {
+      navigation.navigate('Detail');
+      onItemPress({
+        id: null,
+        title: data.name
+      });
+    }}
     onPressOut={onItemPressOut}
     style={styles.item}
     >

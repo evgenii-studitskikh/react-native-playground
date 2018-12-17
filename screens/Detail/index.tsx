@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import {
-  View
-} from "react-native";
+
+import Layout from './layout';
 
 export class DetailScreen extends Component {
 
   render() {
-    
+
     return (
-      <View>
-        Detail
-      </View>
+      <Layout
+        {...this.props}
+      />
     )
   }
 }
