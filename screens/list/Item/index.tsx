@@ -25,7 +25,9 @@ export const Item = ({
   <TouchableOpacity
     onLongPress={onItemLongPress}
     onPress={() => {
-      navigation.navigate('Detail');
+      navigation.navigate('Detail', {
+        name: data.name
+      });
       onItemPress({
         id: null,
         title: data.name

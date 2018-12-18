@@ -7,15 +7,16 @@ import {
 
 import { getActiveListItem } from '../../store/selectors';
 
-interface IDetailScreenLayout {
-  activeListItem: any
+interface IDetailScreenLayoutProps {
+  activeListItem: any,
+  navigation: any
 }
 
-class DetailScreenLayout extends Component<IDetailScreenLayout> {
+class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 
   render() {
     
-    const { activeListItem } = this.props;
+    const { activeListItem, navigation } = this.props;
     
     return (
       <View>

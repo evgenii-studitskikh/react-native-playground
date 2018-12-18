@@ -32,10 +32,7 @@ const AppNavigator = createStackNavigator(
       }
     },
     Detail: {
-      screen: DetailScreen,
-      navigationOptions: {
-        title: 'Name from store'
-      }
+      screen: DetailScreen
     }
   },
   {
