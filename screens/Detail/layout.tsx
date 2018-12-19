@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {
   View,
-  Text
+  Text,
+  ActivityIndicator
 } from "react-native";
+import axios from 'axios';
 
+import { styles } from '../../styles';
 import { getActiveListItem } from '../../store/selectors';
 
 interface IDetailScreenLayoutProps {
@@ -12,17 +15,50 @@ interface IDetailScreenLayoutProps {
   navigation: any
 }
 
+interface IDetailScreenLayoutState {
+  data: any,
+}
+
 class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
+
+  public state: IDetailScreenLayoutState = {
+    data: null
+  }
+
+  public getData = () => {
+
+    const { activeListItem } = this.props;
+    
+    axios.get(activeListItem.url)
+      .then((response) => this.setState({
+        data: response.data
+      }))
+      .catch((error) => console.log(error));
+  }
+  
+  public componentDidMount() {
+    this.getData();
+  }
 
   render() {
     
-    const { activeListItem, navigation } = this.props;
+    const { data } = this.state;
     
     return (
-      <View>
-        <Text>DetailScreen</Text>
-        <Text>{activeListItem && activeListItem.title}</Text>
-      </View>
+      data ?
+        <View style={[{marginTop: 20}, {marginLeft: 20}]}>
+          <Text>Height: {data.height}</Text>
+          <Text>Mass: {data.mass}</Text>
+          <Text>Hair color: {data.hair_color}</Text>
+          <Text>Skin color: {data.skin_color}</Text>
+          <Text>Eye color: {data.eye_color}</Text>
+          <Text>Birth year: {data.birth_year}</Text>
+          <Text>Gender: {data.gender}</Text>
+        </View>
+      :
+        <View style={[styles.flexCenter, styles.flex]}>
+          <ActivityIndicator style={{marginTop: 10}}/>
+        </View>
     )
   }
 }

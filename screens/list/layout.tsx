@@ -51,6 +51,7 @@ class ListScreenLayout extends PureComponent<any, IListScreenLayoutState> {
     
     const { data, isLoading } = this.state;
     const { setActiveListItem, navigation } = this.props;
+
     return (
       <View style={[styles.flex]}>
         <DraggableFlatList

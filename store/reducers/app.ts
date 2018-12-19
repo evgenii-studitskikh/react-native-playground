@@ -5,7 +5,7 @@ import {
 } from "../constants";
 
 export interface IListItem {
-  id: number | null,
+  url: string,
   title: string
 }
 
@@ -15,7 +15,7 @@ interface IAppReducer {
 
 const inititalState = {
   activeListItem: {
-    id: null,
+    url: '',
     title: ''
   }
 };

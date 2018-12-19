@@ -29,7 +29,7 @@ export const Item = ({
         name: data.name
       });
       onItemPress({
-        id: null,
+        url: data.url,
         title: data.name
       });
     }}
