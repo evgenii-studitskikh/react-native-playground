@@ -24,7 +24,7 @@ class ListScreenLayout extends PureComponent<any, IListScreenLayoutState> {
 
   public state: IListScreenLayoutState = {
     data: [],
-    url: `${config.apiPath}/people/`,
+    url: `${config.apiPathSW}/people/`,
     isLoading: false
   }
 

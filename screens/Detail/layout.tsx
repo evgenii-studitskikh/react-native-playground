@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {
   View,
+  ScrollView,
   Text,
-  ActivityIndicator
+  ActivityIndicator,
+  Image
 } from "react-native";
 import axios from 'axios';
 
+import { config } from '.././../config'
 import { styles } from '../../styles';
 import { getActiveListItem } from '../../store/selectors';
 
@@ -17,12 +20,14 @@ interface IDetailScreenLayoutProps {
 
 interface IDetailScreenLayoutState {
   data: any,
+  dataImages: any
 }
 
 class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 
   public state: IDetailScreenLayoutState = {
-    data: null
+    data: null,
+    dataImages: null
   }
 
   public getData = () => {
@@ -34,6 +39,12 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
         data: response.data
       }))
       .catch((error) => console.log(error));
+
+    axios.get(`${config.apiPathPixabay}?key=${config.apiTokenPixabay}&q=${activeListItem.title}`)
+      .then((response) => this.setState({
+        dataImages: response.data
+      }))
+      .catch((error) => console.log(error));
   }
   
   public componentDidMount() {
@@ -42,11 +53,11 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 
   render() {
     
-    const { data } = this.state;
-    
+    const { data, dataImages } = this.state;
+
     return (
       data ?
-        <View style={[{marginTop: 20}, {marginLeft: 20}]}>
+        <ScrollView style={[{marginTop: 20}, {marginLeft: 20}]}>
           <Text>Height: {data.height}</Text>
           <Text>Mass: {data.mass}</Text>
           <Text>Hair color: {data.hair_color}</Text>
@@ -54,7 +65,16 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
           <Text>Eye color: {data.eye_color}</Text>
           <Text>Birth year: {data.birth_year}</Text>
           <Text>Gender: {data.gender}</Text>
-        </View>
+          {dataImages && dataImages.hits &&
+            dataImages.hits.map((image: any) =>
+              <Image 
+                key={image.id}
+                source={{uri: image.largeImageURL}}
+                style={{width: 100, height: 100, marginTop: 10}} 
+              />
+            )
+          }
+        </ScrollView>
       :
         <View style={[styles.flexCenter, styles.flex]}>
           <ActivityIndicator style={{marginTop: 10}}/>

@@ -15,7 +15,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-draggable-flatlist": "^1.1.5",
     "react-native-elements": "^0.19.1",
-    "react-navigation": "^3.0.8",
+    "react-navigation": "^3.0.9",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
@@ -23,12 +23,12 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.15",
-    "@types/react-redux": "^6.0.11",
-    "@types/redux-logger": "^3.0.6",
     "@types/react": "^16.7.13",
     "@types/react-native": "^0.57.15",
     "@types/react-native-draggable-flatlist": "^1.1.0",
     "@types/react-navigation": "^2.13.7",
+    "@types/react-redux": "^6.0.11",
+    "@types/redux-logger": "^3.0.6",
     "babel-preset-expo": "^5.0.0",
     "react-native-typescript-transformer": "^1.2.10",
     "typescript": "^3.2.2"
