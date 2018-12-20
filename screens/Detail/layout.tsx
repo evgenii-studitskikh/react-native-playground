@@ -5,7 +5,7 @@ import {
   ScrollView,
   Text,
   ActivityIndicator,
-  Image
+  Image,
 } from "react-native";
 import axios from 'axios';
 
@@ -57,7 +57,7 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 
     return (
       data ?
-        <ScrollView style={[{marginTop: 20}, {marginLeft: 20}]}>
+        <ScrollView style={[{padding: 20}]}>
           <Text>Height: {data.height}</Text>
           <Text>Mass: {data.mass}</Text>
           <Text>Hair color: {data.hair_color}</Text>
@@ -66,13 +66,15 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
           <Text>Birth year: {data.birth_year}</Text>
           <Text>Gender: {data.gender}</Text>
           {dataImages && dataImages.hits &&
-            dataImages.hits.map((image: any) =>
-              <Image 
-                key={image.id}
-                source={{uri: image.largeImageURL}}
-                style={{width: 100, height: 100, marginTop: 10}} 
-              />
-            )
+            <View style={[styles.flex, styles.flexRow, {flexWrap: 'wrap', justifyContent: 'space-between'}]}>
+              {dataImages.hits.map((image: any) =>
+                <Image 
+                  key={image.id}
+                  source={{uri: image.largeImageURL}}
+                  style={{width: 100, height: 100, marginTop: 10}} 
+                />
+              )}
+            </View>
           }
         </ScrollView>
       :
