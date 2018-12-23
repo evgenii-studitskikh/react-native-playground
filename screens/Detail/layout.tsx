@@ -1,38 +1,48 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {
-  View,
   ScrollView,
-  Text,
   ActivityIndicator,
   Image,
+  TouchableOpacity,
 } from "react-native";
+import {
+  View,
+  Text
+} from 'native-base';
 import axios from 'axios';
 
 import { config } from '.././../config'
 import { styles } from '../../styles';
-import { getActiveListItem } from '../../store/selectors';
+import { 
+  getActiveListItem, 
+  getDataImages 
+} from '../../store/selectors';
+import { 
+  setDataImages, 
+  setDataImagesType 
+} from '../../store/actions/detail';
 
 interface IDetailScreenLayoutProps {
   activeListItem: any,
-  navigation: any
+  navigation: any,
+  dataImages: any,
+  setDataImages: setDataImagesType
 }
 
 interface IDetailScreenLayoutState {
-  data: any,
-  dataImages: any
+  data: any
 }
 
 class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 
   public state: IDetailScreenLayoutState = {
-    data: null,
-    dataImages: null
+    data: null
   }
 
   public getData = () => {
 
-    const { activeListItem } = this.props;
+    const { activeListItem, setDataImages } = this.props;
     
     axios.get(activeListItem.url)
       .then((response) => this.setState({
@@ -41,9 +51,7 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
       .catch((error) => console.log(error));
 
     axios.get(`${config.apiPathPixabay}?key=${config.apiTokenPixabay}&q=${activeListItem.title}`)
-      .then((response) => this.setState({
-        dataImages: response.data
-      }))
+      .then((response) => setDataImages(response.data))
       .catch((error) => console.log(error));
   }
   
@@ -53,7 +61,8 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 
   render() {
     
-    const { data, dataImages } = this.state;
+    const { data } = this.state;
+    const { dataImages, navigation } = this.props;
 
     return (
       data ?
@@ -68,11 +77,15 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
           {dataImages && dataImages.hits &&
             <View style={[styles.flex, styles.flexRow, {flexWrap: 'wrap', justifyContent: 'space-between'}]}>
               {dataImages.hits.map((image: any) =>
-                <Image 
+                <TouchableOpacity
                   key={image.id}
-                  source={{uri: image.largeImageURL}}
-                  style={{width: 100, height: 100, marginTop: 10}} 
-                />
+                  onPress={() => navigation.navigate('Swiper')}
+                >
+                  <Image 
+                    source={{uri: image.largeImageURL}}
+                    style={{width: 100, height: 100, marginTop: 10}} 
+                  />
+                </TouchableOpacity>
               )}
             </View>
           }
@@ -86,7 +99,10 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
 }
 
 const mapStateToProps = (state: any) => ({
-  activeListItem: getActiveListItem(state)
+  activeListItem: getActiveListItem(state),
+  dataImages: getDataImages(state)
 });
 
-export default connect(mapStateToProps, {})(DetailScreenLayout);
+export default connect(mapStateToProps, {
+  setDataImages
+})(DetailScreenLayout);

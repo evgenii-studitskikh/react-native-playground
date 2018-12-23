@@ -6,6 +6,7 @@ import { store } from "./store";
 import { AuthorizationScreen } from './screens/Authorization';
 import { ListScreen } from './screens/List';
 import { DetailScreen } from './screens/Detail';
+import { SwiperScreen } from './screens/Swiper';
 
 export default class App extends React.Component {
   render() {
@@ -33,6 +34,9 @@ const AppNavigator = createStackNavigator(
     },
     Detail: {
       screen: DetailScreen
+    },
+    Swiper: {
+      screen: SwiperScreen
     }
   },
   {

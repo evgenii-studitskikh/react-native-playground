@@ -16,7 +16,6 @@ export class DetailScreen extends Component<any> {
 
     return (
       <Layout
-        {...this.props}
         navigation={navigation}
       />
     )
