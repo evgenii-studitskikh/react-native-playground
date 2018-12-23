@@ -82,7 +82,7 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
                   onPress={() => navigation.navigate('Swiper')}
                 >
                   <Image 
-                    source={{uri: image.largeImageURL}}
+                    source={{uri: image.previewURL}}
                     style={{width: 100, height: 100, marginTop: 10}} 
                   />
                 </TouchableOpacity>

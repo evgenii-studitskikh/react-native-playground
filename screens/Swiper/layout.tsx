@@ -1,20 +1,15 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity,
+  Image
 } from "react-native";
-import { 
-  Container,
-  Header,
+import {
   View,
   DeckSwiper,
   Card,
   CardItem,
-  Thumbnail,
-  Text,
-  Left,
-  Body,
-  Icon
 } from 'native-base';
 
 import { styles } from '../../styles';
@@ -33,7 +28,19 @@ class SwiperScreenLayout extends Component<ISwiperScreenLayoutProps> {
     return (
       dataImages ?
         <View>
-          <Text>yes!</Text>
+          <DeckSwiper
+            dataSource={dataImages.hits}
+            renderItem={(item: any) =>
+              <Card style={{ elevation: 3 }}>
+                <CardItem cardBody>
+                  <Image 
+                    style={{ height: 300, flex: 1 }} 
+                    source={{uri: item.webformatURL}} 
+                  />
+                </CardItem>
+              </Card>
+            }
+          />
         </View>
       :
         <View style={[styles.flexCenter, styles.flex]}>
