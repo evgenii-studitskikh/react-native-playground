@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   ScrollView,
   ActivityIndicator,
-  Image,
   TouchableOpacity,
 } from "react-native";
 import {
@@ -12,6 +11,7 @@ import {
 } from 'native-base';
 import axios from 'axios';
 
+import { FadeInImage } from '../../components/FadeInImage';
 import { config } from '.././../config'
 import { styles } from '../../styles';
 import { 
@@ -81,9 +81,8 @@ class DetailScreenLayout extends Component<IDetailScreenLayoutProps> {
                   key={image.id}
                   onPress={() => navigation.navigate('Swiper')}
                 >
-                  <Image 
-                    source={{uri: image.previewURL}}
-                    style={{width: 100, height: 100, marginTop: 10}} 
+                  <FadeInImage 
+                    source={image.previewURL}
                   />
                 </TouchableOpacity>
               )}

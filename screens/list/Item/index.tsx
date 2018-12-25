@@ -26,7 +26,7 @@ export class Item extends PureComponent<IItemProps, IItemState> {
     fadeAnim: new Animated.Value(0),
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     Animated.timing(
       this.state.fadeAnim,
       {
