@@ -15,6 +15,10 @@ I've learning React Native and this app is my small playground for React Native 
 * [TypeScript](https://www.typescriptlang.org/)
 * [Native Base](https://nativebase.io/)
 
+Public API for data fetching:
+* [The Star Wars API](https://swapi.co/)
+* [Pixabay](https://pixabay.com/en/service/about/api/)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
