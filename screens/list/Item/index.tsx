@@ -1,7 +1,8 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import {
   TouchableOpacity,
-  Text
+  Text,
+  Animated
 } from "react-native";
 
 import { styles } from '../../../styles';
@@ -15,26 +16,61 @@ interface IItemProps {
   navigation: any
 }
 
-export const Item = ({
-  data,
-  onItemLongPress,
-  onItemPress,
-  onItemPressOut,
-  navigation
-}: IItemProps) =>
-  <TouchableOpacity
-    onLongPress={onItemLongPress}
-    onPress={() => {
-      navigation.navigate('Detail', {
-        name: data.name
-      });
-      onItemPress({
-        url: data.url,
-        title: data.name
-      });
-    }}
-    onPressOut={onItemPressOut}
-    style={styles.item}
-    >
-    <Text>{data.name}</Text>
-  </TouchableOpacity>
+interface IItemState {
+  fadeAnim: Animated.Value
+}
+
+export class Item extends PureComponent<IItemProps, IItemState> {
+  
+  public state = {
+    fadeAnim: new Animated.Value(0),
+  }
+
+  componentDidMount() {
+    Animated.timing(
+      this.state.fadeAnim,
+      {
+        toValue: 1,
+        duration: 1000,
+      }
+    ).start();
+  }
+  
+  public render() {
+
+    const {
+      data,
+      onItemLongPress,
+      onItemPress,
+      onItemPressOut,
+      navigation
+    } = this.props;
+
+    const { fadeAnim } = this.state;
+
+    return (
+      <Animated.View
+        onLongPress={onItemLongPress}
+        onPress={() => {
+          navigation.navigate('Detail', {
+            name: data.name
+          });
+          onItemPress({
+            url: data.url,
+            title: data.name
+          });
+        }}
+        onPressOut={onItemPressOut}
+        style={[
+          styles.item,
+          {
+            opacity: fadeAnim
+          }
+        ]}
+        >
+        <Text>{data.name}</Text>
+      </Animated.View>
+    )
+  }
+}
+  
