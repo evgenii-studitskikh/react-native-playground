@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {
   ActivityIndicator,
-  TouchableOpacity,
+  Text,
   Image
 } from "react-native";
 import {
@@ -38,6 +38,7 @@ class SwiperScreenLayout extends Component<ISwiperScreenLayoutProps> {
                     source={{uri: item.webformatURL}} 
                   />
                 </CardItem>
+                <Text style={{margin: 20}}>Tags: {item.tags}</Text>
               </Card>
             }
           />
