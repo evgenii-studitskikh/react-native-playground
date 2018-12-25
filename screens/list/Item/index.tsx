@@ -50,25 +50,29 @@ export class Item extends PureComponent<IItemProps, IItemState> {
 
     return (
       <Animated.View
-        onLongPress={onItemLongPress}
-        onPress={() => {
-          navigation.navigate('Detail', {
-            name: data.name
-          });
-          onItemPress({
-            url: data.url,
-            title: data.name
-          });
-        }}
-        onPressOut={onItemPressOut}
         style={[
           styles.item,
           {
             opacity: fadeAnim
           }
         ]}
+      >
+        <TouchableOpacity
+          style={{padding: 10}}
+          onLongPress={onItemLongPress}
+          onPress={() => {
+            navigation.navigate('Detail', {
+              name: data.name
+            });
+            onItemPress({
+              url: data.url,
+              title: data.name
+            });
+          }}
+          onPressOut={onItemPressOut}
         >
-        <Text>{data.name}</Text>
+          <Text>{data.name}</Text>
+        </TouchableOpacity>
       </Animated.View>
     )
   }
