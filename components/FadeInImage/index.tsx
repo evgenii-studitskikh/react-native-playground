@@ -18,7 +18,7 @@ export class FadeInImage extends Component<IFadeInImageProps, IFadeInImageState>
   }
 
   public onLoad = () => {
-    window.console.log(this.state)
+
     Animated.timing(
       this.state.fadeAnim,
       {

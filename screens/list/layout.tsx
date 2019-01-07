@@ -57,6 +57,7 @@ class ListScreenLayout extends PureComponent<any, IListScreenLayoutState> {
         <DraggableFlatList
           data={data}
           scrollPercent={5}
+          onMoveEnd={({ data }: any) => this.setState({ data })}
           renderItem={({item, move, moveEnd}) =>
             <Item 
               onItemLongPress={move}
